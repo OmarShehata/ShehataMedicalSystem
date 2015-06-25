@@ -1,5 +1,5 @@
 """
-WSGI config for hellodjango project.
+WSGI config for MedicalSystem project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -10,8 +10,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
-from dj_static import Cling
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hellodjango.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MedicalSystem.settings")
 
-application = Cling(get_wsgi_application())
+application = get_wsgi_application()
