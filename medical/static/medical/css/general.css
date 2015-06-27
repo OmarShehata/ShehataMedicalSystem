@@ -1,5 +1,6 @@
 #main-logo {
 	font-size: 60px;
+	margin-top: 40px;
 }
 
 .section-title {
@@ -14,4 +15,11 @@
 .form_error {
 	color:#CF5E5E;
 	font-weight: 600;
+}
+
+#login-link {
+	position: absolute;
+	right:20px;
+	top:10px;
+	font-size: 17px;
 }

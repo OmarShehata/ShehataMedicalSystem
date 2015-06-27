@@ -1,7 +1,7 @@
 Todo:
 =====
 
--Create text top right that says that you're logged in with logout link
+
 -Create sidebar with links
 -Add search box
 -Create Patient button
@@ -46,3 +46,4 @@ Done Tasks:
 -Create logout function
 -Create log in page
 -Finish authentication middleware
+-Create text top right that says that you're logged in with logout link
