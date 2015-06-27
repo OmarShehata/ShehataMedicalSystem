@@ -1,0 +1,17 @@
+#main-logo {
+	font-size: 60px;
+}
+
+.section-title {
+	border-bottom: #eee solid 2px;
+	padding-bottom: 5px;
+}
+
+.form-control {
+	margin-bottom: 10px;
+}
+
+.form_error {
+	color:#CF5E5E;
+	font-weight: 600;
+}

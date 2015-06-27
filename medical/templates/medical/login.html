@@ -1,0 +1,23 @@
+{% extends "medical/base.html" %}
+
+{% block page-content %}
+
+<div class="container">
+	<!-- Log in text -->
+	<h3 class="section-title">Please log in</h3>
+	<!-- Start form -->
+	<form method="post" action="">
+		{% csrf_token %}
+		<div class="form_error">{{no_username}}</div>
+		<input type="text"     class="form-control" id="username" name="username" placeholder="username">
+		<div class="form_error">{{no_password}}</div>
+		<input type="password" class="form-control" id="password" name="password" placeholder="password">
+		<div class="form_error">{{incorrect}}</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+
+	</form>
+	<!-- End form -->
+
+</div>
+
+{% endblock %}

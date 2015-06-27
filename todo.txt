@@ -1,0 +1,48 @@
+Todo:
+=====
+
+-Create text top right that says that you're logged in with logout link
+-Create sidebar with links
+-Add search box
+-Create Patient button
+-Create patient page
+-Make search actually work and show list of patients
+-Clicking on a patient, or creating a patient, creates a visit (one patient may not have two "new" visits at the same time)
+-new visits appear in pending visit page
+-Diagnostic form from pending visit page.
+-Ability to see past visits.
+-Finish diagnostic form, move visit to pending
+-Pending visit form, move to complete
+-Advanced search page 
+
+User Story:
+===========
+-Must be logged in for app to work
+-Patient walks in, enter their name (Create New Visit page)
+	-Show list of matching patient records.
+	-Show button to create new patient (Takes you to create new patient page?)
+-When finished, a new entry shows up in the new visits page. 
+-Doctor clicks on a visit, gets a diagnosis page. Link to past visit information. Fills in diagnosis. Clicks finish.
+-Worker fills in pending visit information. Once done, it is stored as a completed visit.
+
+
+Technical Details:
+==================
+-Default page for worker is create new visit page
+-Default page for doctor is pending visits
+-Sidebar has all the navigation
+-Pages:
+	-Create New visit (Where worker creates a new patient, or just a new visit entry)
+	-New Visits (Doctor fills in diagnosis info)
+	-Pending visits (Worker fills in payment info)
+
+
+
+Done Tasks:
+===========
+-Add bootstrap
+-Add jquery
+-Create title
+-Create logout function
+-Create log in page
+-Finish authentication middleware

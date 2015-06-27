@@ -10,6 +10,8 @@ class patient(models.Model):
 	meta = models.TextField(blank=True);
 
 class visit(models.Model):
+	state = models.CharField(default="new",max_length=50);#new, pending, or complete
+
 	patient = models.ForeignKey('patient')
 	hospital = models.ForeignKey('hospital')
 	hospitalID = models.CharField(max_length=50);
@@ -23,7 +25,7 @@ class visit(models.Model):
 	followupCategory = models.CharField(max_length=50); #Cured, complicated or died
 	followupInfo = models.TextField(blank=True);#If complicated, what happened? Or if died, of what?
 
-	lastSeen = models.DateField(auto_now_add=True);
+	lastSeen = models.DateField(auto_now=True);
 
 	meta = models.TextField(blank=True);
 

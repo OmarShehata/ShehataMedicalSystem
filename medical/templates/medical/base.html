@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load staticfiles %}
+	<!-- Jquery -->
+	<script src="{% static 'medical/js/jquery-1.11.3.min.js' %}"></script>
+
+	<!-- Bootstrap -->
+	<link href="{% static 'medical/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'medical/css/readable-theme.min.css' %}" rel="stylesheet">
+	<script src="{% static 'medical/js/bootstrap.min.js' %}"></script>
+
+	<!-- General Styles -->
+	<link href="{% static 'medical/css/general.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<!-- Logo -->
+<div id="login-link">
+	{% if authenticated %}
+		You are currently logged in as {{authenticated}}. <a href="{% url 'logout' %}">Logout</a>
+	{% else %}
+		<a href="{% url 'login' %}">Log in</a>
+	{% endif %}
+</div>
+<center><h1 id="main-logo"> Shehata Medical System </h1> </center>
+
+{% block page-content %}
+{% endblock %}
+
+</body>
+
+</html>
