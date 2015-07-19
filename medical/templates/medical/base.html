@@ -11,28 +11,72 @@
 	<link href="{% static 'medical/css/readable-theme.min.css' %}" rel="stylesheet">
 	<script src="{% static 'medical/js/bootstrap.min.js' %}"></script>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<!-- General Styles -->
 	<link href="{% static 'medical/css/general.css' %}" rel="stylesheet">
-
+	<link href="{% static 'medical/css/sidebar.css' %}" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- Navbar -->
 
-<!-- Logo -->
-<div id="login-link">
-	{% if authenticated %}
-		You are currently logged in as {{authenticated}}. <a href="{% url 'logout' %}">Logout</a>
-	{% else %}
-		<a href="{% url 'login' %}">Log in</a>
-	{% endif %}
+
+<div id="wrapper" class="toggled">
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+	    <ul class="sidebar-nav">
+	        <li>
+	            <a href="{% url 'new_patient' %}"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Patient</a>
+	        </li>
+	        <li>
+	            <a href="{% url 'visitors' %}"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Visitor List (3) </a> 
+	        </li>
+	        <li>
+	            <a href="{% url 'pending' %}"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Pending (0) </a>
+	        </li>
+	        <li>
+	            <a href="{% url 'search_page' %}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
+	        </li>
+	        <hr id="nav-linebreak">
+	        <li>
+	            <a href=""><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Add Old Data</a>
+	        </li>
+	    </ul>
+	</div>
+	<!-- /#sidebar-wrapper -->
+	
+
+ 	<!-- Page content wrapper -->
+ 	<div id="page-content-wrapper">
+		<div id="login-link">
+			{% if authenticated %}
+				Logged in as {{authenticated}}. <a href="{% url 'logout' %}">Logout</a>
+			{% else %}
+				<a href="{% url 'login' %}">Log in</a>
+			{% endif %}
+		</div>
+		<!-- Logo -->
+		<center><h1 id="main-logo"> Shehata Medical System </h1> </center>
+
+		<!-- Don't show navbar if patient or not logged in -->
+		{% if not isPatient and authenticated %}
+		<!-- Hamburger button -->
+		<button type="button" class="hamburger is-closed">
+          <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+          <span class="hamb-bottom"></span>
+        </button>
+
+		{% endif %}
+
+		{% block page-content %}
+		{% endblock %}
+	</div>
+	<!-- End Page Content-->
 </div>
-<center><h1 id="main-logo"> Shehata Medical System </h1> </center>
 
-{% block page-content %}
-{% endblock %}
-
+<script src="{% static 'medical/js/sidebar.js' %}"></script>
 </body>
 
 </html>

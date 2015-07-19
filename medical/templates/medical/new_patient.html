@@ -1,0 +1,26 @@
+{% extends "medical/base.html" %}
+
+{% block page-content %}
+
+{% load staticfiles %}
+<link href="{% static 'medical/css/new_patient.css' %}" rel="stylesheet">
+
+<div class="container">
+	<h3 class="section-title">New Patient</h3>
+	<p>Enter the full name of the patient. If he or she has visited before, the record will show up. If not, you can create a new profile for them </p>
+	<input type="text" class="form-control" id="patient_name"  placeholder="Mohamed Essam etc..">
+	<div id="results_box"></div>
+</div>
+
+<script src="{% static 'medical/js/spin.min.js' %}"></script>
+<script>
+var spinner = new Spinner().spin()
+//$('#results_box').append(spinner.el)
+
+$('#patient_name').keyup(function () { 
+	var text = $('#patient_name').val();
+	
+});
+</script>
+
+{% endblock %}

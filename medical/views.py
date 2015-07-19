@@ -2,16 +2,35 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
-def base_context_variables(request):
-	#Sets variables for every page
-	context = {}
-	if(request.user.is_authenticated()):
-		context['authenticated'] = request.user.username;
-
-	return context;
+#Helper functions
+from .helpers import isDoctor,isWorker,isPatient
 
 def index(request):
+	# Default page for worker is create new visit page
+	if(isWorker(request.user)):
+		return redirect('new_patient')
+	# Default page for doctor is pending visits
+	if(isDoctor(request.user)):
+		return redirect('pending')
+	if(isPatient(request.user)):
+		#Patients do not currently have permission to anything other than the patient page
+		return redirect('patient');
+
+def new_patient(request):
+	return render(request,"medical/new_patient.html")
+
+def visitors(request):
 	return render(request,"medical/index.html")
+
+def pending(request):
+	return render(request,"medical/index.html")
+
+def search_page(request):
+	return render(request,"medical/index.html")
+
+def patient(request):
+	#User accounts
+	return render(request,"medical/patient.html")
 
 def login_view(request):
 	#if already logged in, redirect

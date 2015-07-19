@@ -1,19 +1,28 @@
 Todo:
 =====
 
+-Create New visit page 
+	-Add search box
+	-If a search term entered, but no patient found, display "Create New Patient?" button
+	-Make button open up a form by ajax
+	-Submit form to create new patient and a visit
+	-Search results show up dynamically under the box
+	-Clicking on any of them creates a new visit (one patient may not have two "new" visits at the same time)
 
--Create sidebar with links
--Add search box
--Create Patient button
--Create patient page
--Make search actually work and show list of patients
--Clicking on a patient, or creating a patient, creates a visit (one patient may not have two "new" visits at the same time)
--new visits appear in pending visit page
--Diagnostic form from pending visit page.
--Ability to see past visits.
--Finish diagnostic form, move visit to pending
--Pending visit form, move to complete
+-Visitor list page
+	-New visits appear in a list here
+	-Clicking on any open takes you to a diagnosis form
+	-Ability to see past visits in the diagnosis form
+	-Clicking finish moves the visit to Pending
+
+-Pending page
+	-List of visits
+	-Click on them to go to payment or additional info form
+	-Clicking finish puts them in the archive/complete
+
+
 -Advanced search page 
+-Page for adding old data
 
 User Story:
 ===========
@@ -35,11 +44,14 @@ Technical Details:
 	-Create New visit (Where worker creates a new patient, or just a new visit entry)
 	-New Visits (Doctor fills in diagnosis info)
 	-Pending visits (Worker fills in payment info)
+	-Search (general, for accessing any patient files)
 
 
 
 Done Tasks:
 ===========
+-Create links to all the pages
+
 -Add bootstrap
 -Add jquery
 -Create title
@@ -47,3 +59,4 @@ Done Tasks:
 -Create log in page
 -Finish authentication middleware
 -Create text top right that says that you're logged in with logout link
+-Create sidebar with links
