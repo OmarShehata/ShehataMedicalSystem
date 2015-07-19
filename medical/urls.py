@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
 from . import views
+from . import ajax
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -11,4 +12,7 @@ urlpatterns = [
     url(r'^pending/$', views.pending, name='pending'),
     url(r'^search/$', views.search_page, name='search_page'),
     url(r'^patient/$', views.patient, name='patient'),
+    #Ajax calls
+    url(r'^searchPatients/$',ajax.searchPatients,name="searchPatients"),
+    url(r'^createPatient/$',ajax.createPatient,name="createPatient"),
 ]

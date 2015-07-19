@@ -1,7 +1,7 @@
 from django.contrib import admin
 from medical.models import *
 
-admin.site.register(patient)
-admin.site.register(visit)
-admin.site.register(referrer)
-admin.site.register(hospital)
+admin.site.register(Patient)
+admin.site.register(Visit)
+admin.site.register(Referrer)
+admin.site.register(Hospital)

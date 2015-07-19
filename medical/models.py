@@ -1,6 +1,6 @@
 from django.db import models
 
-class patient(models.Model):
+class Patient(models.Model):
 	name = models.CharField(max_length=50);
 	dateofbirth = models.DateField();
 	sex = models.CharField(max_length=10);
@@ -8,14 +8,16 @@ class patient(models.Model):
 
 	firstvisit = models.DateField(auto_now_add=True);
 	meta = models.TextField(blank=True);
+	def __str__(self):
+		return self.name;
 
-class visit(models.Model):
+class Visit(models.Model):
 	state = models.CharField(default="new",max_length=50);#new, pending, or complete
 
-	patient = models.ForeignKey('patient')
-	hospital = models.ForeignKey('hospital')
+	patient = models.ForeignKey('Patient')
+	hospital = models.ForeignKey('Hospital')
 	hospitalID = models.CharField(max_length=50);
-	referral = models.ForeignKey('referrer')
+	referral = models.ForeignKey('Referrer')
 	billingPaid = models.FloatField()
 	billingTotal = models.FloatField()
 
@@ -29,12 +31,12 @@ class visit(models.Model):
 
 	meta = models.TextField(blank=True);
 
-class referrer(models.Model):
+class Referrer(models.Model):
 	name = models.CharField(max_length=50);
 	refType = models.CharField(max_length=50);#Whether it's a doctor or syndicate
 	meta = models.TextField(blank=True);
 
-class hospital(models.Model):
+class Hospital(models.Model):
 	name = models.CharField(max_length=50);
 	address = models.CharField(max_length=200);
 	meta = models.TextField(blank=True);

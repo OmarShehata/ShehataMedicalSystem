@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.template.context_processors import csrf
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 #Helper functions
 from .helpers import isDoctor,isWorker,isPatient
@@ -16,6 +18,7 @@ def index(request):
 		#Patients do not currently have permission to anything other than the patient page
 		return redirect('patient');
 
+@ensure_csrf_cookie
 def new_patient(request):
 	return render(request,"medical/new_patient.html")
 

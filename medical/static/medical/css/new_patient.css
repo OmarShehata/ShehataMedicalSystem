@@ -4,3 +4,27 @@
 	width: 100%;
 	left:0px;
 }
+
+#no_results {
+	margin-top: 100px;
+}
+
+#no_results_text {
+	font-size: 20px;
+}
+
+
+#new_patient_name {
+	color:red;
+}
+
+/* Form */
+
+.white-popup-block {
+	background: #FFF;
+	padding: 20px 30px;
+	text-align: left;
+	max-width: 650px;
+	margin: 40px auto;
+	position: relative;
+}
