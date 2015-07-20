@@ -2,16 +2,7 @@ Todo:
 =====
 
 -Create New visit page 
-	-Add search box
-	-If a search term entered, but no patient found, display "Create New Patient?" button
 	-Search results show up dynamically under the box
-	-Make button open up a form by ajax
-	
-	-Submit form to create new patient and a visit
-		-Create submit button
-		-Prevent defualt action
-		-Make it check if any fields are empty and display error
-		-If not, submit the form, create new patient and visit
 	-Clicking on any of them creates a new visit (one patient may not have two "new" visits at the same time)
 
 -Visitor list page
@@ -55,6 +46,12 @@ Technical Details:
 
 Done Tasks:
 ===========
+-Create New visit page 
+	-Add search box
+	-If a search term entered, but no patient found, display "Create New Patient?" button
+	-Make button open up a form by ajax
+	-Submit form to create new patient and a visit
+
 -Create links to all the pages
 
 -Add bootstrap

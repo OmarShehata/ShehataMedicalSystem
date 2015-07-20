@@ -55,15 +55,41 @@
 			</fieldset>
 		</div>
 		<div id="success-box" style="display:none;">
-			<h1>Success!</h1>
+			<h1 style="color:green;">Success!</h1>
+			<h4>Patient profile has been created and a visit has been registered.</h4>
+			<h4><a href="{% url 'visitors' %}">Click here to see the current visitors page</a></h4>
 		</div>
 		<div id="fail-box" style="display:none;">
-			<h1>Fail</h1>
+			<h1 style="color:red;">Fail</h1>
 			<h4>Uh oh! It looks like something went wrong. You should contact an administrator.</h4>
 			<p id="fail-message"></p>
 		</div>
 	</form>
 	<!-- End Popup form -->
+
+	<!-- Confirmation form -->
+	<form id="confirm_form" name="" class="white-popup-block mfp-hide">
+		<div id="confirm-box">
+			<h1>Confirm Visit</h1>
+			<h4>Clicking <span style="color:green;">Yes</span> will confirm this patient as a current visitor</h4>
+			<p id="patient_info_name"></p>
+			<p id="patient_info_gender"></p>
+			<p id="patient_info_dob"></p>
+			<p id="patient_info_phone"></p>
+			<button id="confirm_visit_button" type="submit" class="btn btn-default btn-lg">Yes</button>
+			<button id="no_button" class="btn btn-default btn-lg">No</button>
+		</div>
+		<div id="confirm-success-box" style="display:none;">
+			<h1 style="color:green;">Success!</h1>
+			<h4>A visit has been registered.</h4>
+			<h4><a href="{% url 'visitors' %}">Click here to see the current visitors page</a></h4>
+		</div>
+		<div id="confirm-fail-box" style="display:none;">
+			<h1 style="color:red;">Fail</h1>
+			<p id="fail-message"></p>
+		</div>
+	</form>
+	<!-- End confirmation form -->
 
 </div>
 
@@ -217,7 +243,14 @@ $(function(){
 
 		} else {
 			//Show list of patients
-			//TODO: Create elements of each patient and make them clickable
+			//TODO:
+			// Create elements of each patient and make them clickable
+			// Clicking opens up the confirm form
+			// Show patient info in that form 
+			// No closes the form
+			// Yes registers a visit
+			// 		Make creating also register a visit
+			// 		Check that no visit can be created if this user is already visiting
 		}
 	}
 })
