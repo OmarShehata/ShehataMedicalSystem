@@ -1,5 +1,5 @@
 #results_box {
-	position: absolute;
+	position: relative;
 	height: 100px;
 	width: 100%;
 	left:0px;
@@ -16,6 +16,10 @@
 
 #new_patient_name {
 	color:red;
+}
+
+.patient_list_item {
+	margin-right: 10px; 
 }
 
 /* Form */
