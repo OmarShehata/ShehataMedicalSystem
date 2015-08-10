@@ -15,4 +15,5 @@ urlpatterns = [
     #Ajax calls
     url(r'^searchPatients/$',ajax.searchPatients,name="searchPatients"),
     url(r'^createPatient/$',ajax.createPatient,name="createPatient"),
+    url(r'^createVisit/$',ajax.createVisit,name="createVisit"),
 ]

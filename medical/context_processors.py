@@ -1,5 +1,6 @@
 #Helper functions
 from .helpers import isDoctor,isWorker,isPatient
+from .models import *
 
 def base_context_variables(request):
 	#Sets variables for every page
@@ -10,5 +11,7 @@ def base_context_variables(request):
 		context['isDoctor'] = isDoctor(request.user);
 		context['isWorker'] = isWorker(request.user);
 		context['isPatient'] = isPatient(request.user);
+		#Get number of active visits
+		context['visits'] = len(Visit.objects.filter(state="new"));
 
 	return context;

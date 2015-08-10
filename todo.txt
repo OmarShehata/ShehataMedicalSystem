@@ -1,10 +1,6 @@
 Todo:
 =====
 
--Create New visit page 
-	-Search results show up dynamically under the box
-	-Clicking on any of them creates a new visit (one patient may not have two "new" visits at the same time)
-
 -Visitor list page
 	-New visits appear in a list here
 	-Clicking on any open takes you to a diagnosis form
@@ -51,6 +47,8 @@ Done Tasks:
 	-If a search term entered, but no patient found, display "Create New Patient?" button
 	-Make button open up a form by ajax
 	-Submit form to create new patient and a visit
+	-Search results show up dynamically under the box
+	-Clicking on any of them creates a new visit (one patient may not have two "new" visits at the same time)
 
 -Create links to all the pages
 

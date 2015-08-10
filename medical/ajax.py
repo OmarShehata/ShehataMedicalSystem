@@ -54,4 +54,23 @@ def createVisit(request):
 	if(not 'id' in request.POST):
 		raise Http404;
 
+	patientID = int(request.POST['id'])
+
+	# -1 is a special value, it means the latest created patient
+	if(patientID == -1):
+		patientID = Patient.objects.all().order_by('-pk')[0].pk;
+
+	#Get patient object
+	patient = Patient.objects.get(pk=patientID);
+	#Check if this patient is registered for an active visit
+	visits = Visit.objects.filter(patient=patient);
+	for v in visits:
+		if(v.state != "complete"):
+			return HttpResponse("exists");
+
+	#Register a new visit
+	newVisit = Visit();
+	newVisit.patient = patient;
+	newVisit.save();
+
 	return HttpResponse("success");

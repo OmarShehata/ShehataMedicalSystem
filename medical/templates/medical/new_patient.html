@@ -79,6 +79,14 @@
 			<button id="confirm_visit_button" class="btn btn-default btn-lg">Yes</button>
 			<button id="no_button" class="btn btn-default btn-lg">No</button>
 		</div>
+		<div id="loading-box" style="display:none;">
+			<h1>Loading..</h1>
+		</div>
+		<div id="confirm-exists-box" style="display:none;">
+			<h1 style="color:red;">Error</h1>
+			<h4>A visit for this patient already exists.</h4>
+			<h4><a href="{% url 'visitors' %}">Click here to see the current visitors page</a></h4>
+		</div>
 		<div id="confirm-success-box" style="display:none;">
 			<h1 style="color:green;">Success!</h1>
 			<h4>A visit has been registered.</h4>
@@ -86,7 +94,7 @@
 		</div>
 		<div id="confirm-fail-box" style="display:none;">
 			<h1 style="color:red;">Fail</h1>
-			<p id="fail-message"></p>
+			<p id="confirm-fail-message"></p>
 		</div>
 	</form>
 	<!-- End confirmation form -->
@@ -182,13 +190,19 @@ $(function(){
 			console.log(data)
 		}
 
+		function ConfirmLatestVisit(data){
+			$('#mainform-box').css("display","none")
+			$('#success-box').css("display","block")
+		}
+
 		function GetResponse(data){
 			ResetForm()
 
 
 			if(data == "success"){
-				$('#mainform-box').css("display","none")
-				$('#success-box').css("display","block")
+				//Creating a patient automatically registers them for a new visit
+				$.post("{% url 'createVisit' %}",{'id':-1},ConfirmLatestVisit).fail(FailMessage);
+
 			} else {
 				$('#mainform-box').css("display","none")
 				$('#fail-box').css("display","block")
@@ -243,6 +257,15 @@ $(function(){
 		$('#patient_info_phone').html(patient.phone);
 	}
 
+	var currentPatient;
+
+	function ResetConfirmBox(){
+		$('#confirm-box').css("display","none")
+		$('#loading-box').css("display","none")
+		$('#confirm-success-box').css("display","none")
+		$('#confirm-fail-box').css("display","none")
+	}
+
 	function RetrieveResults(jsondata){
 		patientArray = jsondata;
 		$('#results_box').empty()
@@ -261,6 +284,8 @@ $(function(){
 				$('#results_box').append(patientTag);
 			}
 			$('.patient_list_item').magnificPopup({type:'inline'})
+			ResetConfirmBox()
+			$('#confirm-box').css("display","block")
 
 
 			//Show create new patient button anyway
@@ -275,7 +300,7 @@ $(function(){
 				return false;
 			})
 
-			var currentPatient;
+			
 
 			// Show patient info in that form 
 			$('.patient_list_item').click(function(e){
@@ -287,17 +312,42 @@ $(function(){
 				ShowPatientInfo(currentPatient);
 			})
 			
-			// Yes registers a visit
-			$('#confirm_visit_button').click(function(e){
 
-				
-				e.preventDefault();
-				return false;	
-			})
-			// 		Make creating also register a visit
-			// 		Check that no visit can be created if this user is already visiting
 		}
 	}
+
+	// Yes registers a visit
+	$('#confirm_visit_button').click(function(e){
+		if(currentPatient){
+			//Call the register visit link
+			var data = {id:currentPatient.id};
+			$.post("{% url 'createVisit' %}",data,ConfirmResponse).fail(FailConfirm);
+			//Turn on loading
+			ResetConfirmBox()
+			$('#loading-box').css("display","block")
+		}
+		
+		e.preventDefault();
+		return false;	
+	})
+
+	function ConfirmResponse(data){
+		if(data == "success"){
+			ResetConfirmBox()
+			$('#confirm-success-box').css("display","block")
+		} else if(data == "exists") {
+			ResetConfirmBox()
+			$('#confirm-exists-box').css("display","block")
+		}
+	}
+
+	function FailConfirm(data){
+		console.log(data)
+		ResetConfirmBox()
+		$('#confirm-fail-box').css("display","block")
+		$('#confirm-fail-message').html(data.responseText)
+	}
+
 })
 </script>
 
