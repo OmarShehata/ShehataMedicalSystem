@@ -7,6 +7,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 #Helper functions
 from .helpers import isDoctor,isWorker,isPatient
 
+from .models import *
+
 def index(request):
 	# Default page for worker is create new visit page
 	if(isWorker(request.user)):
@@ -22,8 +24,15 @@ def index(request):
 def new_patient(request):
 	return render(request,"medical/new_patient.html")
 
+def visit(request,ID):
+	return render(request,"medical/index.html")
+
 def visitors(request):
-	return render(request,"medical/visitorList.html")
+	context = {}
+	#Get number of active visits
+	context['visitList'] = Visit.objects.filter(state="new");
+
+	return render(request,"medical/visitorList.html",context)
 
 def pending(request):
 	return render(request,"medical/index.html")

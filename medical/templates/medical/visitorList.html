@@ -4,6 +4,31 @@
 <div class="container">
 	<h3 class="section-title">Active Visitors ({{visits}})</h3>
 	<p>This is a list of all the patients that are currently awaiting their checkup.</p>
-	
+	<table class="table">
+		<!-- Table header -->
+		<tr>
+			<th>Time of visit</th>
+			<th>Name</th>
+			<th>Gender</th>
+		</tr>
+		<!-- End header -->
+		{% for visit in visitList %}
+			<tr class="row-hover" data-id="{{visit.pk}}">
+				<td>{{visit.createdTime}}</td>
+				<td>{{visit.patient.name}}</td>
+				<td>{{visit.patient.sex}}</td>
+			</tr>
+		{% endfor %}
+	</table>
 </div>
+
+<script>
+$(function(){
+	//Make table rows clickable
+	$('.row-hover').click(function(e){
+		var id = $(e.target).parent().data('id');
+		window.location = "{% url 'index' %}visit/" + id
+	})
+});
+</script>
 {% endblock %}

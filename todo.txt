@@ -1,9 +1,7 @@
 Todo:
 =====
 
--Visitor list page
-	-New visits appear in a list here
-	-Clicking on any takes you to the visit page
+
 
 -Visit page
 	-Has diagnosis form and everything
@@ -45,6 +43,10 @@ Technical Details:
 
 Done Tasks:
 ===========
+-Visitor list page
+	-New visits appear in a list here
+	-Clicking on any takes you to the visit page
+
 -Create New visit page 
 	-Add search box
 	-If a search term entered, but no patient found, display "Create New Patient?" button

@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^new/$', views.new_patient, name='new_patient'),
     url(r'^visitors/$', views.visitors, name='visitors'),
+    url(r'^visit/([0-9]+)/$',views.visit,name='visit'),
     url(r'^pending/$', views.pending, name='pending'),
     url(r'^search/$', views.search_page, name='search_page'),
     url(r'^patient/$', views.patient, name='patient'),

@@ -28,6 +28,7 @@ class Visit(models.Model):
 	followupInfo = models.TextField(blank=True);#If complicated, what happened? Or if died, of what?
 
 	lastSeen = models.DateField(auto_now=True);
+	createdTime =  models.DateTimeField(auto_now_add=True);
 
 	meta = models.TextField(blank=True);
 
