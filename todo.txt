@@ -1,8 +1,6 @@
 Todo:
 =====
 
-
-
 -Visit page
 	-Has diagnosis form and everything
 	-Ability to see past visits 

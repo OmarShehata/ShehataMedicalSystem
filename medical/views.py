@@ -38,7 +38,10 @@ def pending(request):
 	return render(request,"medical/index.html")
 
 def search_page(request):
-	return render(request,"medical/index.html")
+	return render(request,"medical/search.html")
+
+def old_data(request):
+	return render(request,"medical/old_data.html")
 
 def patient(request):
 	#User accounts

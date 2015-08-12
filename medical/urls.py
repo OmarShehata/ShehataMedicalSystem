@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^pending/$', views.pending, name='pending'),
     url(r'^search/$', views.search_page, name='search_page'),
     url(r'^patient/$', views.patient, name='patient'),
+    url(r'^old_data/$', views.old_data, name='old_data'),
     #Ajax calls
     url(r'^searchPatients/$',ajax.searchPatients,name="searchPatients"),
     url(r'^createPatient/$',ajax.createPatient,name="createPatient"),
