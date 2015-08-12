@@ -23,7 +23,7 @@ def new_patient(request):
 	return render(request,"medical/new_patient.html")
 
 def visitors(request):
-	return render(request,"medical/index.html")
+	return render(request,"medical/visitorList.html")
 
 def pending(request):
 	return render(request,"medical/index.html")

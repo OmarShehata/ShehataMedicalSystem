@@ -3,8 +3,11 @@ Todo:
 
 -Visitor list page
 	-New visits appear in a list here
-	-Clicking on any open takes you to a diagnosis form
-	-Ability to see past visits in the diagnosis form
+	-Clicking on any takes you to the visit page
+
+-Visit page
+	-Has diagnosis form and everything
+	-Ability to see past visits 
 	-Clicking finish moves the visit to Pending
 
 -Pending page
