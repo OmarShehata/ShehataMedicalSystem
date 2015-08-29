@@ -25,7 +25,10 @@ def new_patient(request):
 	return render(request,"medical/new_patient.html")
 
 def visit(request,ID):
-	return render(request,"medical/index.html")
+	context = {}
+	context['visit'] = Visit.objects.get(pk=ID);
+
+	return render(request,"medical/visit.html",context)
 
 def visitors(request):
 	context = {}
@@ -35,7 +38,11 @@ def visitors(request):
 	return render(request,"medical/visitorList.html",context)
 
 def pending(request):
-	return render(request,"medical/index.html")
+	context = {}
+	#Get number of pending visits
+	context['visitList'] = Visit.objects.filter(state="pending");
+
+	return render(request,"medical/pending.html",context)
 
 def search_page(request):
 	return render(request,"medical/search.html")

@@ -1,6 +1,7 @@
 #main-logo {
 	font-size: 30px;
 	margin-top: 40px;
+  color:rgb(128,128,128);
 }
 
 .section-title {
@@ -192,4 +193,11 @@
 .row-hover:hover {
   cursor: pointer;
   background-color: rgba(0,0,0,0.1);
+}
+
+
+
+.form-section {
+  font-family: sans-serif;
+  font-size: 17px;
 }

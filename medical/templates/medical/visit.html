@@ -1,0 +1,21 @@
+{% extends "medical/base.html" %}
+
+{% block page-content %}
+<div class="container">
+	<center><h2>{{visit.patient.name}} - Diagnosis Form</h2></center>
+	<h3 class="section-title">Patient information</h3>
+	<!-- General information about the patient -->
+	<div class="form-section">
+		<p>Name: {{visit.patient.name}} </p>
+		<p>Gender: {{visit.patient.sex}}</p>
+		<p>Date of birth: {{visit.patient.dateofbirth}}</p>
+		<p>Phone number: {{visit.patient.phone}}</p>
+	</div>
+
+	<h3 class="section-title">Diagnosis</h3>
+	<!-- Diagnosis form -->
+	
+
+	<!-- Follow up section is hidden at first -->
+</div>
+{% endblock %}

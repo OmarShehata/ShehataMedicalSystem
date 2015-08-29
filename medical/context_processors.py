@@ -13,5 +13,6 @@ def base_context_variables(request):
 		context['isPatient'] = isPatient(request.user);
 		#Get number of active visits
 		context['visits'] = len(Visit.objects.filter(state="new"));
+		context['pendingVisits'] = len(Visit.objects.filter(state="pending"))
 
 	return context;

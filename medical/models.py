@@ -22,10 +22,14 @@ class Visit(models.Model):
 	billingTotal = models.FloatField(default=1)
 
 	#Diagnosis
-	category = models.CharField(blank=True,max_length=50);
-	diagnosis = models.TextField(blank=True);
-	followupCategory = models.CharField(blank=True,max_length=50); #Cured, complicated or died
-	followupInfo = models.TextField(blank=True);#If complicated, what happened? Or if died, of what?
+	diagnosis = models.ForeignKey('Diagnosis_Category',related_name="diagnosis_category",null=True)
+	diagnosis_report = models.TextField(blank=True);
+
+	treatment = models.ForeignKey('Diagnosis_Category',related_name="treatment_category",null=True)
+	treatment_report = models.TextField(blank=True);
+
+	followup = models.ForeignKey('Diagnosis_Category',related_name="followup_category",null=True)
+	followup_report = models.TextField(blank=True);
 
 	lastSeen = models.DateField(auto_now=True);
 	createdTime =  models.DateTimeField(auto_now_add=True);
@@ -34,6 +38,11 @@ class Visit(models.Model):
 
 	def __str__(self):
 		return self.patient.name + " - " + str(self.lastSeen);
+
+class Diagnosis_Category(models.Model):
+	role = models.CharField(max_length=50);#Whether it's a diagnosis category, or treatment, or follow up
+	name = models.CharField(max_length=50);
+	sectionData = models.TextField(blank=True);
 
 class Referrer(models.Model):
 	name = models.CharField(max_length=50);
